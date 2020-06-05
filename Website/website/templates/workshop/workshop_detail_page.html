@@ -1,0 +1,67 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags %} 
+{% load wagtailcore_tags %}
+
+{% block content %}
+        {% block extra_css %}
+            <link rel="stylesheet" href="{% static 'css/workshop.css' %}" type="text/css">
+        {% endblock %}
+
+                <section id="about" >
+                    <div class="container" >
+                      <div class="row">
+                        <div class="col-lg-3">
+                          <h3>{{ self.custom_title }}</h3>
+                           
+                        </div>
+                      </div>
+                    </div>
+                  </section>
+                  {% if self.blog_image %}
+                    {% image self.blog_image fill-2000x4000 as img %}
+                    <div class="bg" style="background-image:url({{ img.url }})"></div>
+                  {% else %}
+                    <div class="bg"></div>
+                  {% endif %}
+             
+
+  
+                <!-- <div class="top-left">{{ self.custom_title }}</div> -->
+               
+                <!-- <div class="container" style="position:absolute;">{{ self.custom_title }}</div> -->
+              
+                 
+<!--==========================
+      Workshop Information
+    ============================-->
+    <div class="caption">  
+    <section id="about">
+        <div class="container">
+          <div class="row">
+            <div class="col-lg-8">
+              <h2>About The Event</h2>
+              <p>{% for block in self.content %}
+                  {% include_block block %}
+                  {% endfor %}</p>
+            </div>
+            <div class="col-lg-3">
+              <h2>Where</h2>
+              <p>{{ self.address }}</p>
+              <h2>When</h2>
+              <p>{{ self.date_of_event }}, {{ self.day_of_event }}<br>{{ self.time_of_event }}</p>
+            </div>
+            <div class="col-lg-3">
+              
+            </div>
+          </div>
+        </div>
+      </section>
+               
+                        <!--
+                        <br><br><br><br>
+                        <span class="border">BACKGROUND IMAGE</span> -->
+                </div>    
+                 
+
+ {% endblock %}

@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+    {% block extra_css %}
+    <link rel="stylesheet" href="{% static 'css/gr.css' %}">
+    {% endblock %}
+
+
+             <div class="destination_details_info">
+             <div class="">
+                  <div class="row justify-content-center">
+                      <div class="col-lg-8 col-md-9">
+                          <div class="destination_info">
+                            <h3 style="text-align: center; padding-bottom: 0%; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 40px; color: #85144b;">{{ self.subtitle }}</b></h3>
+                                    {% for block in page.content %}
+                                        {% include_block block %}
+                                    {% endfor %}
+                                  </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+ 
+
+
+            {% block extra_js %}
+            <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+            {% endblock %}
+
+{% endblock %}

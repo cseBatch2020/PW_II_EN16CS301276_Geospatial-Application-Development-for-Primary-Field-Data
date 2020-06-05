@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+{% load static %}
+{% load wagtailimages_tags %}
+{% load wagtailcore_tags %}
+
+{% block title %}
+Unnat Maharashtra Abhiyan
+{% endblock %}
+
+{% block title_suffix %}
+Unnat Maharashtra Abhiyan
+{% endblock %}
+{% block content %}
+
+{% block extra_css %}
+<!-- <link rel="stylesheet" href="{% static 'css/footer_style.css' %}"> -->
+<!-- <link rel="stylesheet" href="http://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css"> -->
+<link rel="stylesheet" href="{% static 'css/font-awesome.min.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/themify-icons.css' %}" type="text/css">
+<!-- <link rel="stylesheet" href="{% static 'css/elegant-icons.css' %}" type="text/css"> -->
+<link rel="stylesheet" href="{% static 'css/owl.carousel.min.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/nice-select.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/jquery-ui.min.css' %}" type="text/css">
+<!-- <link rel="stylesheet" href="{% static 'css/slicknav.min.css' %}" type="text/css"> -->
+<link rel="stylesheet" href="{% static 'css/style.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/load-more-button.css' %}" type="text/css">
+<link rel="stylesheet" href="{% static 'css/bootstrap.min.css' %}" type="text/css">
+
+<style>
+  #html5-watermark {
+      display:none !important;
+   }
+  </style>
+{% endblock %}
+
+<!-- <div id="preloder">
+  <div class="loader"></div>
+</div> -->
+
+    
+
+<!-- carousel Section Begin -->
+
+{% for itr in self.carousel_images.all %}
+{% image itr.carousel_image fill-900x900 as c_img %}
+<div class="carousel-item">
+  <img src="{{ c_img.url }}" alt="...">
+  <div class="carousel-caption d-none d-md-block">
+    <h5 style="color: rgb(255, 255, 255) !important;">{{ itr.carousel_image_title }}</h5>
+    <p>{{ itr.carousel_image_information|richtext }}</p>
+  </div>
+</div>
+{% endfor %}
+
+<div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+  <ol class="carousel-indicators">
+    <li data-target="#carouselExampleIndicators" data-slide-to="0" class="active"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="1"></li>
+    <li data-target="#carouselExampleIndicators" data-slide-to="2"></li>
+  </ol>
+  <div class="carousel-inner">
+    {% for itr in self.carousel_images.all %}
+    {% image itr.carousel_image fill-900x500 as c_img %}
+    <div class="carousel-item {% if forloop.counter == 1%}active{% endif %}">
+      <img height = "500px" class="d-block w-100" src="{{ c_img.url }}" alt="First slide">
+      <div class="carousel-caption d-none d-md-block">
+        <h5>{{ itr.carousel_image_title }}</h5>
+        <p>{{ itr.carousel_image_information|richtext }}</p>
+      </div>
+    </div>
+    {% endfor %}
+  </div>
+  <a class="carousel-control-prev" href="#carouselExampleIndicators" role="button" data-slide="prev">
+    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+    <span class="sr-only">Previous</span>
+  </a>
+  <a class="carousel-control-next" href="#carouselExampleIndicators" role="button" data-slide="next">
+    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+    <span class="sr-only">Next</span>
+  </a>
+</div>
+<!-- carousel Section End -->
+ <!-- vision and mission / important Link -->
+<section class="deal-of-week set-bg spad" >
+  <div class="deal">
+    <div class="row mt-5">
+
+          <div class="col-md-6">
+       
+              <div class="section-title">
+                  <h2>Vision and Mission</h2>
+                  <div class="justify-content">
+                  <p>{{ self.vision_and_mission }}</p>
+          
+                  </div>
+              </div>
+            </div>
+
+<div class="col-md-6" id="importantlinks">
+          <div class="section-title">
+            <h2>Important Links</h2>
+            <div id="marqueecontainer">
+              <div id="vmarquee">
+                <marquee direction="up" onmouseover="stop()" onmouseout="start()" scrollamount="5" height='300px' style="padding-top:20px;">
+                <p>{{ self.important_links|richtext }}</p>
+              </marquee>
+              </div>
+            </div>
+
+          </div>
+          </div>
+        </div>
+      </div>
+</section>
+ <!-- vision and link section end -->
+
+<!-- workshop/event -->
+<section class="latest-blog spad" id="workshopsandevents">
+  <div class="row">
+      <div class="col-lg-12">
+          <div class="section-title">
+              <h2>Workshops and Events</h2>
+          </div>
+      </div>
+  </div>
+  <div class="interior container clearfix">
+ 
+      {{ self.workshop_and_events }}
+    
+  </div>
+</section>
+
+
+
+<!-- Media gallery Begin -->
+<section class="man-banner spad">
+  <div class="container-fluid">
+    <div class="row">
+      <div class="col-lg-12" >
+            <div class="section-title">
+                    <h2>Media Gallery</h2>
+            </div>
+          <div class="product-slider owl-carousel">
+              <div class="item"><a href="{% static 'img/JSA/1.jpg' %}" class="html5lightbox" ><img class="img-fluid" src="{% static 'img/JSA/1.jpg' %}"></a></div>
+              <div class="item"><a href="{% static 'img/JSA/2.jpg' %}" class="html5lightbox" ><img class="img-fluid" src="{% static 'img/JSA/2.jpg' %}"></a></div>
+              <div class="item"><a href="{% static 'img/JSA/3.jpg' %}" class="html5lightbox" ><img class="img-fluid" src="{% static 'img/JSA/3.jpg' %}"></a></div>
+              <div class="item"><a href="" class="html5lightbox" data-width="480" data-height="320" title="Big Buck Bunny"><img class="img-fluid" src="{% static 'img/JSA/sohonisit_you.png' %}"></a></div>
+          </div>
+      </div>
+  </div>
+  </div>
+</section>
+
+<section class="spad" >
+  <div class="featured_candidates_area">
+      <div class="container" id="contact">
+           <div class="row">
+             <div class="col-lg-12" >
+                  <div class="filter-control">
+                    <div class="section-title">
+                            <h2>Contact</h2>
+                    </div>
+                  </div>
+                  <div class="container-fluid">
+                  <div class="row">
+                        <div style="width: 50%; float:left">
+                      <div class="single_candidates text-center">
+                          <div class="thumb">
+                              <!-- <img src="{% static 'img/1.png' %}" alt=""> -->
+                          </div>
+                          <a href="#"><h4>Mr. ABC</h4></a>
+                          <p>
+                           Contact Details</p>
+                      </div>
+                    </div>
+                    <div style="width: 50%; float:left">
+                      <div class="single_candidates text-center">
+                          <div class="thumb">
+                              <!-- <img src="{% static 'img/2.png' %}" alt=""> -->
+                          </div>
+                          <a href="#"><h4>Mr. XYZ</h4></a>
+                          <p>
+                           Contact Details</p>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+                  <!-- </section> -->
+              </div>
+          </div>
+      </div>
+  </div>
+</section>
+
+  
+
+{% block extra_js %}
+ <!-- Js Plugins -->
+    <script src="{% static 'js/jquery-3.3.1.min.js' %}"></script>
+    <script src="{% static 'js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/jquery-ui.min.js' %}"></script>
+    <script src="{% static 'js/jquery.countdown.min.js' %}"></script>
+    <script src="{% static 'js/jquery.nice-select.min.js' %}"></script>
+    <script src="{% static 'js/jquery.zoom.min.js' %}"></script>
+    <script src="{% static 'js/jquery.dd.min.js' %}"></script>
+    <script src="{% static 'js/jquery.slicknav.js' %}"></script>
+    <script src="{% static 'js/owl.carousel.min.js' %}"></script>
+    <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/load-more-button.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/ekko-lightbox/5.3.0/ekko-lightbox.js"></script>
+    <script type="text/javascript" src="{% static 'js/jquery.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/html5lightbox.js' %}"></script>
+   
+{% endblock %}
+
+{% endblock %}

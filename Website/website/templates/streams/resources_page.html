@@ -1,0 +1,20 @@
+{% load wagtailcore_tags %}
+{% load static %}
+
+<div class="card" style="text-align: justify;">
+    <div class="card-heading active" style="font-size: large;">
+        <a data-toggle="collapse" data-target="#a{{ forloop.counter }}" >
+            {{ self.title }}
+        </a>
+    </div>
+    <div id="a{{ forloop.counter }}" class="collapse" data-parent="">
+
+    {% for i in self.points %}
+        <div style="margin-left:40px">                            
+            <ul>
+                <li style="font-size:medium"> {{ i.point }} <a href="{{ i.url }}"><i style="font-size:20px" class="fa">&#xf0a9;</i></a></li>
+            </ul>
+        </div>
+    {% endfor %}
+</div>
+</div>

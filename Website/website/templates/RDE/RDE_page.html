@@ -1,0 +1,41 @@
+{% extends "base.html" %}
+{% load wagtailcore_tags %}
+{% load static %}
+
+{% block content %}
+    {% block extra_css %}
+    {% endblock %}
+
+
+          
+
+            
+                            <div class="faq-section spad" style="padding-top:40px;">
+                              <div class="container">
+                                  <div class="row">
+                                      <div class="col-lg-12">
+                                          <div class="faq-accordin">
+                                              <div class="accordion" id="accordionExample">
+                                                <h3 style="text-align: center; padding-bottom: 30px; padding-top: 20px; font-family: Verdana, Geneva, Tahoma, sans-serif; font-size: 40px; color: #85144b;">{{ self.subtitle }}</b></h3>    
+                                                      {% for block in page.content %}
+                                                          {% include_block block %}
+                                                      {% endfor %}
+                                                    </div>
+                                                  </div>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </div>
+                  
+                          <!-- </div>
+                       </div>
+                    </div>
+                </div>
+            </div>  -->
+
+            {% block extra_js %}
+            <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script> 
+        
+            {% endblock %}
+
+{% endblock %}

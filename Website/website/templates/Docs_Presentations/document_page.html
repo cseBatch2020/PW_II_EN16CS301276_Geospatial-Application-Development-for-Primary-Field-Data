@@ -1,0 +1,68 @@
+{% extends "base.html" %}
+{% load static %}
+{% block content %}
+{% load wagtailcore_tags %}
+<!-- {% block extra_css %}
+<style></style>
+{% endblock %} -->
+
+
+<body>
+    <!-- Page Preloder -->
+     <!-- presentation_area_start  -->
+     <div class="popular_destination_area">
+        <div class="container">
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                    <div class="section_title text-center mb_70">
+                        <h3>Presentations</h3><br><br>
+                       
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                 
+                {% for block in page.contents %}
+                    {% include_block block %}
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+    <!-- popular_destination_area_end  -->
+
+    
+   
+
+   
+   
+    <!-- Faq Section Begin -->
+    <div class="faq-section spad">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-12">
+                    <div class="faq-accordin">
+                        <div class="accordion" id="accordionExample">
+                            <h3>Project Documents</h3><br><br>
+                            
+                            {% for block in page.content %}
+                                {% include_block block %}
+                            {% endfor %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Faq Section End -->
+
+    
+    
+    <!-- Js Plugins -->
+   
+    {% block extra_js %}
+      <script src="js/jquery-3.3.1.min.js"></script>
+      <script src="js/bootstrap.min.js"></script>
+      
+    {% endblock %}
+    
+{% endblock %}

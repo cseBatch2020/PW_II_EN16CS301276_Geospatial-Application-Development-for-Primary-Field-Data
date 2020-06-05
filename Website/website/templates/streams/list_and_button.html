@@ -1,0 +1,38 @@
+{% load wagtailcore_tags %}
+{% load static %}
+
+<!-- {% if search_term %}
+  <header class="page-header">
+      <h1 class="page-title">Search Results for <span>{{ search_type }}: {{ search_term }}</span></h1>
+  </header>
+{% endif %} -->
+
+<div class="table-responsive">
+    <h5 class="mb-20" style="background-color:#2D3142; padding-left: 10px; padding-top: 10px; padding-bottom: 10px; color:white">{{ self.title }}</h5>
+   
+</div>
+
+<table class="table table-hover" width="600">
+  <tbody>
+    {% for i in self.points %}
+    <tr class="table-primary">
+      
+      
+      <td style="font-size: medium; color:midnightblue; font-family:Arial, Helvetica, sans-serif ;">{{ i.point }}</td>
+      <td>
+        <div class="dropdown">
+          <button class="btn btn-primary dropdown-toggle" type="button" data-toggle="dropdown" style="background-color: rgba(31, 84, 159, 0.5); border-color: rgba(31, 84, 159, 0.5);">Download
+          <!-- <span class="caret"></span> -->
+          </button>
+          <ul class="dropdown-menu">
+              {% for j in i.pdfs %}
+                  <li><a class="dropdown-item disable" href="{{ j.url }}">{{ j.title }}</a>
+              {% endfor %}
+              </li>
+          </ul>
+        </div>
+      </td>
+    </tr>
+    {% endfor %}
+  </tbody>
+</table>

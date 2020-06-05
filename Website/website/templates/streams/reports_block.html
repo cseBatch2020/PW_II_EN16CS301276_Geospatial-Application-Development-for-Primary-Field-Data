@@ -1,0 +1,16 @@
+{% load wagtailimages_tags %}
+{% load static %}
+
+   <div class="col-lg-6">
+      <div class="box wow fadeInLeft">
+        <div class="icon"><img src="{% static 'img/2.png' %}" width="50" height="50"></div>
+         <h4 class="title"><a href="{{ self.cards.document.url }}">{{ self.cards.title }}</a></h4>
+         <p>{{ self.cards.text }}</p>      
+      </div>
+  </div>
+
+
+
+
+
+

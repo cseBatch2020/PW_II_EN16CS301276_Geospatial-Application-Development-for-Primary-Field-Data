@@ -1,0 +1,23 @@
+{% load wagtailimages_tags %}
+<div class="row">
+{% for card in self.cards %}
+    {% image card.image fill-300x200 as img %}
+    <div class="col-12 col-sm-6 col-md-4 blogBox moreBox " style="display:none;" >
+        <div class="item">
+            <img src="{{ img.url }}">
+            <div class="blogTxt">
+                
+                <h2>
+                    {{ card.title }}
+                </h2>
+                <p class="post_intro hidden-xs">
+                    {{ card.text }}
+                </p>
+            </div>
+        </div>
+        </div>
+{% endfor %}
+<div id="loadMore">
+    <a href="#">Load More</a>
+  </div>
+</div>
